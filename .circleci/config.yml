@@ -9,7 +9,7 @@ jobs:
       - run: |
           VERSION=0.1
           docker-compose up -d --build
-      - run: sleep 10
+      - run: docker container ls
       - run: docker-compose exec specifically-sports ng test --watch=false
       - run: docker-compose exec specifically-sports ng e2e --port 4202
       - run: docker-compose stop
