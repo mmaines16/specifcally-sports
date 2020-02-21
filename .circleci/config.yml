@@ -10,8 +10,8 @@ jobs:
           VERSION=0.1
           docker docker-compose up -d --build
       - run: |
-        docker-compose exec specifically-sports ng test --watch=false &&
-        docker-compose exec specifically-sports ng e2e --port 4202
+          docker-compose exec specifically-sports ng test --watch=false
+          docker-compose exec specifically-sports ng e2e --port 4202
       - run: docker-compose stop
 workflows:
     build-and-test:
