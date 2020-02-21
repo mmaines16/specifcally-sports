@@ -5,8 +5,6 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run: npm install
       - run: |
           VERSION=0.1.$CIRCLE_BUILD_NUM
