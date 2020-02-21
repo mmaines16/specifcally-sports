@@ -3,14 +3,16 @@ jobs:
   build-and-test:
     docker:
       - image: circleci/node:latest
-    steps:
+    pre-steps:
       - checkout
       - setup_remote_docker
       - run: |
           VERSION=0.1
           docker-compose up -d --build
-          docker-compose exec specifically-sports ng test --watch=false
-          docker-compose exec specifically-sports ng e2e --port 4202
+    steps:
+      - run: docker-compose exec specifically-sports ng test --watch=false
+      - run: docker-compose exec specifically-sports ng e2e --port 4202
+    post-steps: 
       - run: docker-compose stop
 workflows:
     build-and-test:
