@@ -8,7 +8,7 @@ jobs:
       - setup_remote_docker
       - run: |
           VERSION=0.1
-          docker docker-compose up -d --build
+          docker-compose up -d --build
       - run: |
           docker-compose exec specifically-sports ng test --watch=false
           docker-compose exec specifically-sports ng e2e --port 4202
