@@ -5,12 +5,14 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: npm install
       - setup_remote_docker
       - run: |
           VERSION=0.1
-          docker build -t mmaines16/specifically-sports:0.1 .
-      - run: docker image ls
+          docker docker-compose up -d --build
+      - run: |
+        docker-compose exec specifically-sports ng test --watch=false
+        docker-compose exec specifically-sports ng e2e --port 4202
+      - run: docker-compose stop
 workflows:
     build-and-test:
       jobs:
