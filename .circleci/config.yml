@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
+      - setup_remote_docker
       - run: |
           VERSION=0.1
           docker build -t mmaines16/specifically-sports:0.1 .
