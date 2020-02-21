@@ -3,14 +3,10 @@ jobs:
   build-and-test:
     docker:
       - image: circleci/node:latest
-    executor:
-      name: node/default
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: echo 'Hello World'
+      - run: npm install
+      - run: echo 'Hello World'
 workflows:
     build-and-test:
       jobs:
