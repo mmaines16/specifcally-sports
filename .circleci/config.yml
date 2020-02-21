@@ -5,8 +5,13 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run: npm install
-      - run: echo 'Hello World'
+      - run: |
+          VERSION=0.1.$CIRCLE_BUILD_NUM
+          docker build -t $DOCKER_USER/$DOCKER_TAG:$VERSION .
+      -run: docker image ls
 workflows:
     build-and-test:
       jobs:
