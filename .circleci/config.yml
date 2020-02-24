@@ -22,6 +22,7 @@ jobs:
       - run:
           name: release
           command: npm run semantic-release || true
+          requires: build-and-test
 workflows:
     build-and-test:
       jobs:
