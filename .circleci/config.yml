@@ -12,7 +12,6 @@ jobs:
       - run: docker-compose exec specifically-sports ng e2e --port 4202
       - run: docker-compose stop
   release:
-    requires: build-and-test
     docker:
       - image: 'circleci/node:latest'
     steps:
@@ -28,3 +27,4 @@ workflows:
       jobs:
         - build-and-test
         - release
+          requires: build-and-test
