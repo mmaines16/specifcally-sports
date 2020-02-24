@@ -27,4 +27,4 @@ workflows:
       jobs:
         - build-and-test
         - release:
-          requires: build-and-test
+            requires: build-and-test
