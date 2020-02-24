@@ -18,12 +18,17 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: ENV Set up
+          command: |
+                echo 'export DOCKERHUB_USER="mmaines16"' >> $BASH_ENV
+                echo ${DOCKERHUB_PASS}
+      - run:
           name: Build Docker image
           command: docker build -t mmaines16/specifically-sports:latest .
       - run:
           name: Deploy to Docker Hub
           command: |
-                echo "${DOCKERHUB_PASS}" | docker login -u "{$DOCKERHUB_USER}" --password-stdin
+                echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin
                 docker push mmaines16/specifically-sports:latest
   release:
     docker:
