@@ -12,7 +12,7 @@ jobs:
       - run: docker-compose exec specifically-sports ng e2e --port 4202
       - run: docker-compose stop
   docker-hub-deploy:
-     environment:
+    environment:
       IMAGE_NAME: mmaines16/specifically-sports
     docker:
       - image: circleci/node:latest
@@ -42,6 +42,12 @@ workflows:
   build-and-test:
     jobs:
       - build-and-test
+      - docker-hub-deploy:
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only: master
       - release:
           requires:
             - build-and-test
