@@ -26,5 +26,9 @@ workflows:
     build-and-test:
       jobs:
         - build-and-test
-        - release:
-            requires: build-and-test
+        test:
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only: master
