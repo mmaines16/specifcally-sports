@@ -11,7 +11,19 @@ jobs:
       - run: docker-compose exec specifically-sports ng test --watch=false
       - run: docker-compose exec specifically-sports ng e2e --port 4202
       - run: docker-compose stop
+  release:
+    docker:
+      - image: 'circleci/node:latest'
+    steps:
+      - checkout
+      - run:
+          name: install
+          command: npm install
+      - run:
+          name: release
+          command: npm run semantic-release || true
 workflows:
     build-and-test:
       jobs:
         - build-and-test
+        - release
