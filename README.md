@@ -3,6 +3,10 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/mmaines16/specifcally-sports.svg)](https://greenkeeper.io/)
 [![mmaines16](https://circleci.com/gh/mmaines16/specifcally-sports.svg?style=shield)](https://circleci.com/gh/mmaines16/specifcally-sports)
 
+  <a href="#badge">
+    <img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
+  </a>
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 
 ## Development server
