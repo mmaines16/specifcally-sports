@@ -11,6 +11,22 @@ jobs:
       - run: docker-compose exec specifically-sports ng test --watch=false
       - run: docker-compose exec specifically-sports ng e2e --port 4202
       - run: docker-compose stop
+  docker-hub-deploy:
+     environment:
+      IMAGE_NAME: mmaines16/specifically-sports
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+       - setup_remote_docker
+      - run:
+          name: Build Docker image
+          command: docker build -t $IMAGE_NAME:latest .
+      - run:
+          name: Deploy to Docker Hub
+          command: |
+                echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin
+                docker push $IMAGE_NAME:latest
   release:
     docker:
       - image: 'circleci/node:latest'
