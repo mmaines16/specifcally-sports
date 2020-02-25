@@ -13,7 +13,7 @@ jobs:
       - run: docker-compose stop
   docker-hub-deploy:
     docker:
-      - image: mmaines16/circleci
+      - image: mmaines16/circleci:latest
     steps:
       - checkout
       - setup_remote_docker
