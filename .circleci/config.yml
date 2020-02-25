@@ -13,7 +13,7 @@ jobs:
       - run: docker-compose stop
   docker-hub-deploy:
     docker:
-      - image: circleci/node:latest
+      - image: mmaines16/circleci
     steps:
       - checkout
       - setup_remote_docker
@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Deploy to Docker Hub
           command: |
-                echo "\$DOCKERHUB_PASS" | docker login -u "\$DOCKERHUB_USER" --password-stdin
+                echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin
                 docker push mmaines16/specifically-sports:latest
   release:
     docker:
